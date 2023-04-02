@@ -1,4 +1,4 @@
-import { Component, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { PorPaisComponent } from "./pais/pages/por-pais/por-pais.component";
 import { PorRegionComponent } from "./pais/pages/por-region/por-region.component";
@@ -8,20 +8,20 @@ import { VerPaisComponent } from "./pais/pages/ver-pais/ver-pais.component";
 const routes:Routes=[
     {
         path:'',
-        component: PorPaisComponent,
-        pathMatch: 'full'
+        component:PorPaisComponent,
+        pathMatch:'full'
     },
     {
-        path: 'region',
-        component: PorRegionComponent,
+        path:'region',
+        component: PorRegionComponent
     },
     {
-        path: 'capital',
-        component: PorCapitalComponent,
+        path:'capital',
+        component: PorCapitalComponent
     },
     {
-        path: 'pais/:id',
-        component: VerPaisComponent,
+        path:'pais/:id',
+        component: VerPaisComponent
     },
     {
         path:'**',
@@ -29,14 +29,13 @@ const routes:Routes=[
     }
 ]
 
-
 @NgModule({
     imports:[
         RouterModule.forRoot(routes)
-
     ],
     exports:[
-        RouterModule,
+        RouterModule
     ],
 })
+
 export class AppRoutingModule{}
