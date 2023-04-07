@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Heroe } from '../interfaces/heroes.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class HeroesService {
   ) { }
 
 getHeroes(){
-  return this.http.get('http://localhost:3000/heroes')
+  return this.http.get<Heroe[]>('http://localhost:3000/heroes')
 }
 
 }
