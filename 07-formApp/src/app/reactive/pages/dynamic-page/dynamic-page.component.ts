@@ -28,9 +28,34 @@ export class DynamicPageComponent {
     return this.myForm.get('favoriteGames') as FormArray;
   }
 
+  isValidField(field:string){
+    return this.myForm.controls[field].errors
+    && this.myForm.controls[field].touched;
+  }
+
+  isValidFielInArray(formArray:FormArray,index:number){
+    return formArray.controls[index].errors
+      && formArray.controls[index].touched;
+  }
+
+  getFieldError(field:string):string | null{
+    if (!this.myForm.controls[field])return null;
+    const errors = this.myForm.controls[field].errors || {};
+    for (const key of Object.keys(errors)){
+      switch (key){
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlength':
+          return `Mínimo ${errors['minlength'].requiredLength} caracters.`
+      }
+    }
+    return null
+  }
+
   onAddToFavorite(): void {
     if (this.newFavorite.invalid) return;
     const newGame = this.newFavorite.value;
+
 
     this.favoriteGames.push(this.fb.control(newGame, Validators.required));
 
