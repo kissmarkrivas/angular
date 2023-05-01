@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ValidatorsService} from 'src/app/shared/service/validators.service';
 import {EmailValidatorService} from 'src/app/shared/validators/email-validator.service';
 import * as customValidators from 'src/app/shared/validators/validators';
@@ -27,7 +27,7 @@ export class RegisterPagesComponent {
   constructor(
     private fb:FormBuilder,
     private validatorsService:ValidatorsService,
-    private emailValidator:EmailValidator
+    private emailValidator:EmailValidatorService
   ){}
 
   isValidFiel(field:string){
