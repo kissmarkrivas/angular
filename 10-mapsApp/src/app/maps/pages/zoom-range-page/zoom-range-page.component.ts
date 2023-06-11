@@ -11,7 +11,7 @@ export class ZoomRangePageComponent implements AfterViewInit {
 
   public zoom:number = 10;
   public map?:Map;
-  public currentLngLat = new LngLat(-74.5,40)
+  public currentLngLat = new LngLat(-75.69214184383607, -11.427420114646665)
 
   ngAfterViewInit(): void {
     // console.log(this.divMap);
@@ -30,10 +30,12 @@ export class ZoomRangePageComponent implements AfterViewInit {
     if (!this.map)throw 'Mapa NO Inicializado';
 
     this.map.on('zoom',(ev)=>{
+      console.log(ev);
       this.zoom = this.map!.getZoom();
     })
 
     this.map.on('zoomend',(ev)=>{
+      console.log(ev);
       if(this.map!.getZoom()<18) return;
       this.map!.zoomTo(18);
     })
